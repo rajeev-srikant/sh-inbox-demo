@@ -1,0 +1,130 @@
+[
+  {
+    "id": "E001",
+    "from": "taro.yamada@abccorp.example",
+    "subject": "Locked out!!",
+    "body": "Hi IT, I typed my password wrong a few times this morning and now I can't log in at all. I have a client call at 11. Employee ID 10234. Please help.",
+    "expected_category": "Password & Account",
+    "expected_priority": "High"
+  },
+  {
+    "id": "E002",
+    "from": "maria.santos@abccorp.example",
+    "subject": "VPN not connecting from home",
+    "body": "Hello, since yesterday ABC Connect keeps saying 'connection failed' when I work from home. My internet works fine for other websites. I already restarted the app. I'm on my company laptop (ABC-LT-4471).",
+    "expected_category": "VPN & Remote Access",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "E003",
+    "from": "kenji.sato@abccorp.example",
+    "subject": "I think I clicked a bad link",
+    "body": "I got an email that looked like it was from our bank asking me to confirm my account. I clicked the link and typed my work password before I realised it looked wrong. What should I do? This was about 10 minutes ago.",
+    "expected_category": "Security & Phishing",
+    "expected_priority": "Urgent"
+  },
+  {
+    "id": "E004",
+    "from": "lisa.chen@abccorp.example",
+    "subject": "Laptop stolen at the station",
+    "body": "My laptop bag was stolen at Shinagawa station about an hour ago. The laptop was locked. I'm going to the police now. Employee ID 20877. What else do I need to do?",
+    "expected_category": "Hardware",
+    "expected_priority": "Urgent"
+  },
+  {
+    "id": "E005",
+    "from": "akira.tanaka@abccorp.example",
+    "subject": "Request: Adobe Acrobat Pro",
+    "body": "Hi, I need Adobe Acrobat Pro to edit PDF contracts for the legal team. My manager is Ms. Ito. Can you install it on my laptop? Thanks.",
+    "expected_category": "Software",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "E006",
+    "from": "emma.wilson@abccorp.example",
+    "subject": "Printer on 3F not working",
+    "body": "The printer TKY-3F-Printer shows a paper jam error but there is no paper stuck in the tray. Several people on our floor can't print.",
+    "expected_category": "Printer",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "E007",
+    "from": "yuki.nakamura@abccorp.example",
+    "subject": "New monitor for home office",
+    "body": "Hello, I work from home 2 days a week and would like an external monitor. How much can I spend and how do I order one?",
+    "expected_category": "Hardware",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "E008",
+    "from": "david.kim@abccorp.example",
+    "subject": "Working from Thailand next month",
+    "body": "Hi, I'd like to work remotely from Bangkok for 3 weeks starting the 2nd of next month. Will the VPN work there and what approvals do I need?",
+    "expected_category": "VPN & Remote Access",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "E009",
+    "from": "sakura.ito@abccorp.example",
+    "subject": "Wi-Fi keeps dropping in meeting room B",
+    "body": "The ABC-Corp Wi-Fi disconnects every few minutes in meeting room B on the 5th floor. It's fine at my desk. It happens on everyone's laptops in that room.",
+    "expected_category": "Network & Wi-Fi",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "E010",
+    "from": "tom.baker@abccorp.example",
+    "subject": "laptop slow",
+    "body": "my laptop is super slow since last week, takes 10 min to start. pls fix",
+    "expected_category": "Hardware",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "E011",
+    "from": "hana.suzuki@abccorp.example",
+    "subject": "Changed my phone - MFA",
+    "body": "I got a new phone yesterday and my old one was reset. Now I can't approve the sign-in requests in Authenticator so I can't log in to email or VPN. Employee ID 30112.",
+    "expected_category": "Password & Account",
+    "expected_priority": "High"
+  },
+  {
+    "id": "E012",
+    "from": "raj.patel@abccorp.example",
+    "subject": "USB drive for client presentation",
+    "body": "I have a presentation at a client site on Friday and their projector PC only accepts USB. Our laptops block USB drives. Can I get an exception for this?",
+    "expected_category": "Security & Phishing",
+    "expected_priority": "Medium"
+  },
+  {
+    "id": "E013",
+    "from": "naomi.fujita@abccorp.example",
+    "subject": "パスワードのリセット",
+    "body": "パスワードの有効期限が切れてしまい、ログインできません。リセットの方法を教えてください。社員番号 41205。",
+    "expected_category": "Password & Account",
+    "expected_priority": "High"
+  },
+  {
+    "id": "E014",
+    "from": "chris.martin@abccorp.example",
+    "subject": "Leaving the company - what to return?",
+    "body": "My last day is the 31st. What equipment do I need to return and by when? I have a laptop, a monitor and a headset from IT.",
+    "expected_category": "Hardware",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "E015",
+    "from": "olivia.brown@abccorp.example",
+    "subject": "Lunch order for Friday team event",
+    "body": "Hi all, please reply with your lunch choice for Friday's team event: sushi, curry or salad. Thanks!",
+    "expected_category": "Not IT",
+    "expected_priority": "Low"
+  },
+  {
+    "id": "E016",
+    "from": "ken.watanabe@abccorp.example",
+    "subject": "Excel crashes + VPN issue",
+    "body": "Two problems: Excel crashes every time I open the budget file, and since this morning the VPN disconnects after a few minutes. I'm working from home today and need both for a deadline at 3pm.",
+    "expected_category": "Software",
+    "expected_priority": "High"
+  }
+]
