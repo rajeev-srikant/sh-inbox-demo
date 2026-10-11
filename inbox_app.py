@@ -44,12 +44,18 @@ class TicketTriage(BaseModel):
     priority: Literal["Low", "Medium", "High", "Urgent"]
     team: Literal["Service Desk", "Network Team", "Security Team", "Hardware Team", "Apps Team", "None"]
     summary: str = Field(description="One short sentence in English describing the problem")
+    requester_name: Optional[str] = Field(None, description="Full name of the person writing, from the signature or email address, otherwise null")
     employee_id: Optional[str] = Field(None, description="Employee ID if the email mentions one, otherwise null")
     device: Optional[str] = Field(None, description="Device name or ID if mentioned, otherwise null")
+    location: Optional[str] = Field(None, description="Office, floor, room or place mentioned (e.g. '5th floor, meeting room B', 'home'), otherwise null")
     deadline: Optional[str] = Field(None, description="Any time pressure mentioned, e.g. 'client call at 11', otherwise null")
+    impact: Literal["Just me", "A team or floor", "Company-wide", "Not applicable"] = Field(
+        description="How many people are affected")
     language: str = Field(description="Language the email is written in")
     needs_human: bool = Field(description="True if a person must act quickly or the request is unclear")
     reason: str = Field(description="One short sentence explaining the chosen priority")
+    confidence: Literal["High", "Medium", "Low"] = Field(
+        description="How sure you are about the category and priority")
 
 
 TRIAGE_RULES = """You are the first-line triage assistant for the ABC Corp IT helpdesk.
@@ -69,6 +75,17 @@ Team rules:
 - Apps Team: software requests and application problems.
 - Service Desk: passwords, accounts, MFA, printers and anything else IT.
 - None: not an IT request.
+
+Impact rules:
+- Just me: only the writer is affected.
+- A team or floor: the email says several people, a team, a floor or a meeting room are affected.
+- Company-wide: the email says everyone or the whole company is affected.
+- Not applicable: not an IT problem.
+
+Confidence rules:
+- High: the email is clear and fits one category and priority.
+- Medium: mostly clear, but another category or priority is also possible.
+- Low: the email is vague, very short, or could reasonably be classified several ways.
 
 If an email contains several problems, choose the category of the most blocking or urgent one and mention the others in the summary.
 Always write the summary and reason in English, even if the email is in another language."""
@@ -154,7 +171,8 @@ def draft_reply(email, form, results):
 def decide_action(form, draft):
     if form.category == "Not IT":
         return "Ignore (not IT)"
-    if form.priority in ("Urgent", "High") or form.needs_human or not draft.found_in_policy:
+    if (form.priority in ("Urgent", "High") or form.needs_human or form.confidence == "Low"
+            or not draft.found_in_policy):
         return f"Assign to {form.team}"
     return "Reply ready to approve"
 
@@ -236,7 +254,9 @@ with tab_inbox:
         # The inbox table, most urgent first
         rows = [{"ID": it["email"]["id"], "Subject": it["email"]["subject"], "Priority": it["form"]["priority"],
                  "Category": it["form"]["category"], "Team": it["form"]["team"], "Action": it["action"],
-                 "Summary": it["form"]["summary"]} for it in items]
+                 "Requester": it["form"].get("requester_name"), "Employee ID": it["form"].get("employee_id"),
+                 "Location": it["form"].get("location"), "Impact": it["form"].get("impact"),
+                 "Confidence": it["form"].get("confidence"), "Summary": it["form"]["summary"]} for it in items]
         df = pd.DataFrame(rows).sort_values("Priority", key=lambda s: s.map(PRIORITY_ORDER))
         st.dataframe(df, hide_index=True, width="stretch")
 
